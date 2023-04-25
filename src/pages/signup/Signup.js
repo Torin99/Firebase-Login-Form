@@ -8,11 +8,15 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const { signup, isPending, error } = useSignup();
+  const [match, setMatch] = useState(true);
 
   function handleSubmit(e) {
     e.preventDefault();
     console.log(email, password, confirm);
-    signup(email, password);
+    if (password === confirm) {
+      setMatch(true);
+      signup(email, password);
+    } else setMatch(false);
   }
   return (
     <form onSubmit={handleSubmit} className="signup-form">
@@ -49,6 +53,7 @@ function Signup() {
         </button>
       )}
       {error && <p>{error}</p>}
+      {!match && <p>Passwords do not match</p>}
     </form>
   );
 }

@@ -1,6 +1,4 @@
-import styles from "./Home.css";
-
 function Home() {
-  return <div>Home</div>;
+  return <div>Congratulations! You signed In</div>;
 }
 export default Home;
